@@ -30,54 +30,8 @@
       }
     </style>
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script>
 
-      $.ajax({
-        url: "https://geolocation-db.com/jsonp",
-        jsonpCallback: "callback",
-        dataType: "jsonp",
-        success: function (location) {
-          var data = new Date(),
-            dia = data.getDate().toString().padStart(2, '0'),
-            mes = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
-            ano = data.getFullYear();
-          
-          data = dia + '/' + mes + '/' + ano;
 
-          //AQUI altera o texto ANTES do nome da cidade
-          textoAntesCidade = 'Você e algumas pessoas próximo a ';
-          //AQUI altera o texto DEPOIS do nome da cidade
-          textoDepoisCidade = ' foram selecionadas para ver este vídeo até o dia ';
-
-          mostrarData = true; //SE não quiser que a data apareça é só mudar o valor 'true' para 'false' e vice-versa para mostrar novamente 
-          
-          if(location.city)
-            $('#container-cidade').html(textoAntesCidade + location.city + textoDepoisCidade + (mostrarData ? data : ''));
-        }
-      });
-
-  </script>
-  <style>
-    #container-cidade {
-      padding: 1rem;
-      width: 100%;
-    
-      /* AQUI altera a cor da letra */
-      color: #FFFFFF;
-      display: inline-table;
-      /* AQUI altera o tamanho da letra */
-      font-size: 15px;
-      /* AQUI altera a altura da caixa */
-      height: 13px;
-      z-index: 1;
-      position: inherit;
-      top: 0;
-      left: 0;
-      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-      text-align: center;
-    }
-  </style>
     
     <!-- Meta Pixel Code -->
 <script>
@@ -113,9 +67,10 @@
   </head>
   <body>
     
-   <nav class="navbar justify-content-center text-center">
+  <nav class="navbar justify-content-center text-center">
       <span class="lead">
-        <div id="container-cidade">Aguarde um momento...</div>
+        <i class="fas fa-exclamation-triangle mr-2"></i>ATENÇÃO: Este vídeo será removido no dia <span id="dia"></span> de <span id="mes"></span>, aproveite enquanto está disponível!
+      </span>
     </nav>
 
     <!--<section class="py-5 fsec">
